@@ -1,0 +1,137 @@
+// Copyright (C) 2011-2012.
+// Author: Marcello Esposito (esposito.marce@gmail.com)
+//
+// This file is part of SMSRobot.
+//   
+// SMSRobot is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//   
+// SMSRobot is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//   
+// You should have received a copy of the GNU General Public License
+// along with SMSRobot; see the file COPYING. If not, see
+// <http://www.gnu.org/licenses/> and write to <esposito.marce@gmail.com>.
+
+INSTALL INSTRUCTIONS
+
+0. File extraction
+Unzip package in a folder of your choice.
+
+1. Create the database
+You can (possibly modify and) use one of the scripts contained in the folder
+DBScripts to create the database structure. It is made by just one table called Sms.
+
+2. Install the windows services
+The services to be installed are two: "SMS Sender" and "SMS Enqueuer".
+Install them by using InstallUtil, distributed along with the .NET framework.
+You have to type something like:
+
+  c:\windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe "c:\your\path\to\SMSSender\SMSSenderService.exe"
+  c:\windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe "c:\your\path\to\SMSEnqueuer\SMSEnqueuerService.exe"
+
+Note: should you need to unregister the services, you must use /u option, like this:
+
+  c:\windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe /u "c:\your\path\to\SMSSender\SMSSenderService.exe"
+
+3. Configure your SMS engines
+Edit the file SMSSender\SmsEngines.xml according to your hardware configuration.
+You have to know COM ports the modems are bind to.
+HyperTerminal is your friend. Open a COM connection and test whether the modem is listening by typing AT command.
+If your modem is alive you should see something like this:
+
+  AT
+  +OK
+
+A separate <Engine ...> section has to be created for each available modem.
+
+You should have something like this.
+
+<?xml version="1.0" encoding="utf-8" ?>
+<Engines>
+  <Engine Name="MyModem1">
+    <ConcreteEngineClassName>NokiaStyleSmsEngine</ConcreteEngineClassName>
+    <Port>COM10</Port>
+    <Baudrate>2400</Baudrate>
+    <Parity>None</Parity>
+    <DataBits>8</DataBits>
+    <StopBits>One</StopBits>
+  </Engine>
+  <Engine Name="MyModem2">
+    <ConcreteEngineClassName>NokiaStyleSmsEngine</ConcreteEngineClassName>
+    <Port>COM12</Port>
+    <Baudrate>2400</Baudrate>
+    <Parity>None</Parity>
+    <DataBits>8</DataBits>
+    <StopBits>One</StopBits>
+  </Engine>
+  <Engine Name="MyModem3">
+    <ConcreteEngineClassName>NokiaStyleSmsEngine</ConcreteEngineClassName>
+    <Port>COM14</Port>
+    <Baudrate>2400</Baudrate>
+    <Parity>None</Parity>
+    <DataBits>8</DataBits>
+    <StopBits>One</StopBits>
+  </Engine>
+</Engines>
+
+5. Set up your configuration environment
+Edit the following files:
+  SMSSender\SMSSenderService.exe.config
+  SMSEnqueuer\SMSEnqueuerService.exe.config
+
+5.1 WCF configuration
+Find in both files this section and modify it accordingly to your settings:
+
+          <baseAddresses>
+            <add baseAddress="net.tcp://<yourserveraddress>:18181/SMSSender" />
+          </baseAddresses>
+          
+5.2 DB configuration
+Uncomment the configuration snippet corresponding to your DB technology (or write your own in case
+you don't find it). Then, modify the configuration string under the tag
+<property name="connection.connection_string"> according to your db environment (see point 1).
+      
+Be sure you have the right .NET DB connector installed (e.g. MySql.Data.dll if you chose the mysql
+database, or Oracle.DataAccess.dll for Oracle).
+      
+6. Start the services
+You can start the services through Windows Control Panel --> Services.
+Alternatively, you can type in Start/Run: services.msc
+Alternatively, you can type at DOS prompt:
+  >  net start "SMS Enqueuer"
+  >  net start "SMS Sender"
+  
+If the services don't start, check the event window (under Control Panel/Administration Tools) to
+have information about the error.
+
+7. Push SMSs in the queue.
+You can use a handcrafted WCF client.
+Reference the enqueuer service in your client project.
+The code to consume WCF service is something like (change +12345678 with your phone number):
+
+            using (var client = new ServiceReference1.SMSEnqueuerWcfClient())
+            {
+                client.SendSMS("+12345678", "Test SMS");
+            }
+            
+You can also follow the dirty way :)
+Directly push Sms into the database through SQL. Something like:
+            
+            //Mysql way
+            INSERT INTO Sms (Id, Message, PhoneNumber, EnqueueTime) VALUES (UNHEX(REPLACE(UUID(),'-','')), 'Test SMS', '+12345678', current_timestamp)
+            
+            //Oracle way
+            INSERT INTO Sms (Id, Message, PhoneNumber, EnqueueTime) VALUES (sys_guid(), 'Test SMS', '+12345678', current_timestamp)
+            
+For other DMBS technologies, you have to find the right way to insert a Guid into a database row.
+            
+If everything goes fine, the Sms should be delivered in a minute.
+Info about sending (time and modem id) are updated in the DB table just after SMS is delivered to the telecom operator.
+
+8. Write me an email with a photo from your country ;-)
+  esposito.marce@gmail.com
