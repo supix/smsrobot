@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SMSSender.Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SMSSender.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="SmsState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Enqueued" />
+      <xs:enumeration value="Sending" />
+      <xs:enumeration value="Sent" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SmsState" nillable="true" type="tns:SmsState" />
+</xs:schema>

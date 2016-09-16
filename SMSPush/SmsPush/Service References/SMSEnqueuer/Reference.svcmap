@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fdc84604-ba64-4978-84ee-e232dd429817" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="net.tcp://smssender_wcf:18181/SMSSender/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="036facf9-90c3-4ea9-98b2-5672aac3078a" SourceId="1" SourceUrl="net.tcp://smssender_wcf:18181/SMSSender/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="db7cc590-3684-4231-81d5-ba9d83543164" SourceId="1" SourceUrl="net.tcp://smssender_wcf:18181/SMSSender/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="6681c468-0dc9-4505-ac91-9a18f2c7147e" SourceId="1" SourceUrl="net.tcp://smssender_wcf:18181/SMSSender/mex" />
+    <MetadataFile FileName="SMSSender.Entities.xsd" MetadataType="Schema" ID="4387830e-ee77-4bbc-bf4d-1b28345a9a9f" SourceId="1" SourceUrl="net.tcp://smssender_wcf:18181/SMSSender/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="08b24c7e-a00b-4ded-94d4-05e21903e886" SourceId="1" SourceUrl="net.tcp://smssender_wcf:18181/SMSSender/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

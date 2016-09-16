@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schemas", "Schemas", "{EF488D89-9145-407C-B5F4-E374E099C93D}"
+	ProjectSection(SolutionItems) = preProject
+		packages\NHibernate.3.3.3.4000\nhibernate-configuration.xsd = packages\NHibernate.3.3.3.4000\nhibernate-configuration.xsd
+		packages\NHibernate.3.3.3.4000\nhibernate-mapping.xsd = packages\NHibernate.3.3.3.4000\nhibernate-mapping.xsd
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMSSender", "SMSSender\SMSSender.csproj", "{66B02F2F-363E-4CD4-924C-E1C62FFFD5D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMSEnqueuerWcf", "SMSSenderWcf\SMSEnqueuerWcf.csproj", "{C91072B6-DA38-468B-9A1B-1717A5AD7241}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMSSenderService", "SMSSenderService\SMSSenderService.csproj", "{09F381A5-EF8E-4194-8E81-038A58B42F07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMSEnqueuerService", "SMSEnqueuerService\SMSEnqueuerService.csproj", "{5F030872-13E4-4191-B1B5-09AFA96C1BF5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66B02F2F-363E-4CD4-924C-E1C62FFFD5D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66B02F2F-363E-4CD4-924C-E1C62FFFD5D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66B02F2F-363E-4CD4-924C-E1C62FFFD5D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66B02F2F-363E-4CD4-924C-E1C62FFFD5D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C91072B6-DA38-468B-9A1B-1717A5AD7241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C91072B6-DA38-468B-9A1B-1717A5AD7241}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C91072B6-DA38-468B-9A1B-1717A5AD7241}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C91072B6-DA38-468B-9A1B-1717A5AD7241}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09F381A5-EF8E-4194-8E81-038A58B42F07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09F381A5-EF8E-4194-8E81-038A58B42F07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09F381A5-EF8E-4194-8E81-038A58B42F07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09F381A5-EF8E-4194-8E81-038A58B42F07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F030872-13E4-4191-B1B5-09AFA96C1BF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F030872-13E4-4191-B1B5-09AFA96C1BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F030872-13E4-4191-B1B5-09AFA96C1BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F030872-13E4-4191-B1B5-09AFA96C1BF5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

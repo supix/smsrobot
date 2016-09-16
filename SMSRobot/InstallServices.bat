@@ -1,0 +1,2 @@
+c:\windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe "c:\SMSRobot\SMSSender\SMSSenderService.exe"
+c:\windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe "c:\SMSRobot\SMSEnqueuer\SMSEnqueuerService.exe"
