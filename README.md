@@ -1,4 +1,3 @@
-[https://github.com/supix/smsrobot](https://github.com/supix/smsrobot)
 https://github.com/supix/smsrobot
 
 // Copyright (C) 2011-2012.
