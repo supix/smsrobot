@@ -1,1 +1,1 @@
-https://github.com/supix/smsrobot
+http://smsrobot.sourceforge.net/
