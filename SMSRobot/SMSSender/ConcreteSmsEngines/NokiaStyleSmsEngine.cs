@@ -86,9 +86,6 @@ namespace SMSSender.ConcreteSmsEngines
                 log.Debug("Sending message");
                 SendCommand(message + (char)(26), "OK");
                 log.Debug("OK");
-
-                //if (Logger != null)
-                    //Logger.Log("Sent SMS to " + phoneNumber + " - Text: " + message);
             }
             finally
             {
@@ -104,7 +101,7 @@ namespace SMSSender.ConcreteSmsEngines
                 }
             }
 
-            Thread.Sleep(4000); //puff puff... take some rest
+            Thread.Sleep(4000); //puff puff... take some rest, otherwise something might go wrong.
         }
         
         private void SendCommand(string command, string responseToWaitFor)
